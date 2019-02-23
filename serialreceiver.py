@@ -9,7 +9,7 @@ from matplotlib import pyplot
 
 
 class SerialPacketReceiver:
-    def __init__(self, ser_name = "/dev/ttyUSB1", ser_baud = 115200):
+    def __init__(self, ser_name = "/dev/ttyUSB1", ser_baud = 460800):
         self.s = serial.Serial(port = ser_name,baudrate = ser_baud)
         self.s.baudrate = ser_baud
 
@@ -54,7 +54,6 @@ class SerialPacketReceiver:
 
     def receive_loop(self):
         c = self.get_char()
-        #print(c)
         if self.is_parsing:
             self.payload_buffer+=c
             if len(self.payload_buffer)>self.max_payload_len:
@@ -63,6 +62,7 @@ class SerialPacketReceiver:
                 self.is_parsing = False
 
         if self.check_sequence(self.end_sequence):
+            logging.debug("end sequence detected!")
             final_payload = self.payload_buffer[:-4]
             if self.is_payload_size_valid(final_payload):
                 #todo - add pushing to some kind of queue
@@ -72,6 +72,7 @@ class SerialPacketReceiver:
             self.is_parsing = False
 
         if self.check_sequence(self.start_sequence):
+            logging.debug("start sequence detected!")
             logging.info("starting sequence detected - parsing data begin")
             self.payload_buffer = bytearray(0)
             self.is_parsing = True
@@ -95,6 +96,9 @@ class SerialPacketReceiver:
 
 
 if __name__ == "__main__":
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
     r = SerialPacketReceiver()
     while True:
         samples = r.receive_loop()
