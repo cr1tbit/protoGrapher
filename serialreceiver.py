@@ -55,6 +55,8 @@ class SerialPacketReceiver:
     def receive_loop(self):
         c = self.get_char()
         if self.is_parsing:
+            self.counter+=1
+            #print(self.counter)
             self.payload_buffer+=c
             if len(self.payload_buffer)>self.max_payload_len:
                 logging.error("packet extended maximum size - discarding.")
@@ -72,6 +74,7 @@ class SerialPacketReceiver:
             self.is_parsing = False
 
         if self.check_sequence(self.start_sequence):
+            self.counter = 0
             logging.debug("start sequence detected!")
             logging.info("starting sequence detected - parsing data begin")
             self.payload_buffer = bytearray(0)
@@ -82,13 +85,17 @@ class SerialPacketReceiver:
         samples = []
         try:
             graph_msg.ParseFromString(packet_bytestring[2:])
+            logging.info("graph id is:" + str(graph_msg.graphId))
+            logging.info("graph name is:" + graph_msg.graphXName)
             for n in graph_msg.payload:
                 samples.append(n)
         except Exception as e:
             print("error parsing proto because")
             print(e)
         print (graph_msg.packetName)
-        return samples
+        if graph_msg.graphId == 2:
+            return samples
+        return None
 
 
 
@@ -99,7 +106,7 @@ if __name__ == "__main__":
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
 
-    r = SerialPacketReceiver()
+    r = SerialPacketReceiver(ser_name='/dev/ttyUSB2', ser_baud=115200)
     while True:
         samples = r.receive_loop()
         if samples is not None:
