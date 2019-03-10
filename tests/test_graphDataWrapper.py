@@ -1,5 +1,5 @@
 from unittest import TestCase
-from protoGrapher import SerialPacketReceiver, GraphDataWrapper, pack_bytestring, pb
+from protoGrapher import SerialPacketReceiver, GraphDataWrapper, pack_bytes, pb
 import logging
 
 logging.getLogger().setLevel(logging.INFO)
