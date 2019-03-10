@@ -8,6 +8,7 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -19,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='graphData.proto',
   package='',
   syntax='proto2',
-  serialized_options=None,
-  serialized_pb=_b('\n\x0fgraphData.proto\"\xc5\x02\n\tgraphData\x12\x12\n\npacketName\x18\x01 \x01(\t\x12\x1f\n\nPacketType\x18\x02 \x01(\x0e\x32\x0b.PacketType\x12\x0f\n\x07graphId\x18\x03 \x01(\x05\x12\x12\n\ngraphXName\x18\x04 \x01(\t\x12\x12\n\ngraphXUnit\x18\x05 \x01(\t\x12\x19\n\x11graphXSampleValue\x18\x06 \x01(\x02\x12\x16\n\x0egraphXSampleNo\x18\x07 \x01(\x05\x12\x12\n\ngraphYName\x18\x08 \x01(\t\x12\x12\n\ngraphYUnit\x18\t \x01(\t\x12\x19\n\x11payloadStartIndex\x18\n \x01(\x05\x12\x12\n\npayloadLen\x18\x0b \x01(\x05\x12\x18\n\x10graphDataVersion\x18\x0c \x01(\x05\x12\x15\n\rpayload_int32\x18\x0e \x03(\x05\x12\x0f\n\x07payload\x18\x0f \x03(\x02*\xb3\x01\n\nPacketType\x12\r\n\tT_UNKNOWN\x10\x00\x12\x12\n\x0eT_GENERIC_CPLT\x10\x01\x12\x12\n\x0eT_GENERIC_PART\x10\x02\x12\x12\n\x0eT_GENERIC_CONT\x10\x03\x12\x12\n\x0eT_SAMPLES_CPLT\x10\x04\x12\x12\n\x0eT_SAMPLES_PART\x10\x05\x12\x12\n\x0eT_SAMPLES_CONT\x10\x06\x12\x0e\n\nT_FFT_CPLT\x10\x07\x12\x0e\n\nT_FFT_PART\x10\x08')
+  serialized_pb=_b('\n\x0fgraphData.proto\"\xc5\x02\n\tgraphData\x12\x12\n\npacketName\x18\x01 \x01(\t\x12\x1f\n\npacketType\x18\x02 \x01(\x0e\x32\x0b.PacketType\x12\x0f\n\x07graphId\x18\x03 \x01(\x05\x12\x12\n\ngraphXName\x18\x04 \x01(\t\x12\x12\n\ngraphXUnit\x18\x05 \x01(\t\x12\x19\n\x11graphXSampleValue\x18\x06 \x01(\x02\x12\x16\n\x0egraphXSampleNo\x18\x07 \x01(\x05\x12\x12\n\ngraphYName\x18\x08 \x01(\t\x12\x12\n\ngraphYUnit\x18\t \x01(\t\x12\x19\n\x11payloadStartIndex\x18\n \x01(\x05\x12\x12\n\npayloadLen\x18\x0b \x01(\x05\x12\x18\n\x10graphDataVersion\x18\x0c \x01(\x05\x12\x15\n\rpayload_int32\x18\x0e \x03(\x05\x12\x0f\n\x07payload\x18\x0f \x03(\x02*\xb3\x01\n\nPacketType\x12\r\n\tT_UNKNOWN\x10\x00\x12\x12\n\x0eT_GENERIC_CPLT\x10\x01\x12\x12\n\x0eT_GENERIC_PART\x10\x02\x12\x12\n\x0eT_GENERIC_CONT\x10\x03\x12\x12\n\x0eT_SAMPLES_CPLT\x10\x04\x12\x12\n\x0eT_SAMPLES_PART\x10\x05\x12\x12\n\x0eT_SAMPLES_CONT\x10\x06\x12\x0e\n\nT_FFT_CPLT\x10\x07\x12\x0e\n\nT_FFT_PART\x10\x08')
 )
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _PACKETTYPE = _descriptor.EnumDescriptor(
   name='PacketType',
@@ -31,43 +32,43 @@ _PACKETTYPE = _descriptor.EnumDescriptor(
   values=[
     _descriptor.EnumValueDescriptor(
       name='T_UNKNOWN', index=0, number=0,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_GENERIC_CPLT', index=1, number=1,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_GENERIC_PART', index=2, number=2,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_GENERIC_CONT', index=3, number=3,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_SAMPLES_CPLT', index=4, number=4,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_SAMPLES_PART', index=5, number=5,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_SAMPLES_CONT', index=6, number=6,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_FFT_CPLT', index=7, number=7,
-      serialized_options=None,
+      options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='T_FFT_PART', index=8, number=8,
-      serialized_options=None,
+      options=None,
       type=None),
   ],
   containing_type=None,
-  serialized_options=None,
+  options=None,
   serialized_start=348,
   serialized_end=527,
 )
@@ -99,105 +100,105 @@ _GRAPHDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
-      name='PacketType', full_name='graphData.PacketType', index=1,
+      name='packetType', full_name='graphData.packetType', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphId', full_name='graphData.graphId', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphXName', full_name='graphData.graphXName', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphXUnit', full_name='graphData.graphXUnit', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphXSampleValue', full_name='graphData.graphXSampleValue', index=5,
       number=6, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphXSampleNo', full_name='graphData.graphXSampleNo', index=6,
       number=7, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphYName', full_name='graphData.graphYName', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphYUnit', full_name='graphData.graphYUnit', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='payloadStartIndex', full_name='graphData.payloadStartIndex', index=9,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='payloadLen', full_name='graphData.payloadLen', index=10,
       number=11, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='graphDataVersion', full_name='graphData.graphDataVersion', index=11,
       number=12, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='payload_int32', full_name='graphData.payload_int32', index=12,
       number=14, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
     _descriptor.FieldDescriptor(
       name='payload', full_name='graphData.payload', index=13,
       number=15, type=2, cpp_type=6, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      options=None),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  serialized_options=None,
+  options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
@@ -207,10 +208,9 @@ _GRAPHDATA = _descriptor.Descriptor(
   serialized_end=345,
 )
 
-_GRAPHDATA.fields_by_name['PacketType'].enum_type = _PACKETTYPE
+_GRAPHDATA.fields_by_name['packetType'].enum_type = _PACKETTYPE
 DESCRIPTOR.message_types_by_name['graphData'] = _GRAPHDATA
 DESCRIPTOR.enum_types_by_name['PacketType'] = _PACKETTYPE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 graphData = _reflection.GeneratedProtocolMessageType('graphData', (_message.Message,), dict(
   DESCRIPTOR = _GRAPHDATA,

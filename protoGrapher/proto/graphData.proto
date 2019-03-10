@@ -1,0 +1,70 @@
+syntax = "proto2";
+
+enum PacketType {
+  T_UNKNOWN = 0;
+
+  //GENERIC - unspecified data type
+  //CPLT-this packet contains all of the plot's data
+  T_GENERIC_CPLT = 1;
+
+  //PART-this packet has only part of the samples
+  T_GENERIC_PART = 2;
+
+  //CONT-this packet contains continous data
+  T_GENERIC_CONT = 3;
+
+  //SAMPLES - sample data
+  T_SAMPLES_CPLT = 4;
+  T_SAMPLES_PART = 5;
+  T_SAMPLES_CONT = 6;
+
+  //FFT - fft data, continous type wouldn't really
+  //make sense here
+  T_FFT_CPLT = 7;
+  T_FFT_PART = 8;
+}
+
+message graphData {
+  //user-friendly name of the packet, to be used
+  //as plot title, also very usefull while sniffing
+  //packet content during development.
+  optional string packetName = 1;
+
+  optional PacketType packetType = 2;
+  
+  //If specific graph is split between multiple
+  //graphData messages, this unique ID may be used
+  //to distinguish data fragments from various sources.
+  optional int32 graphId = 3;
+
+  //data for graph drawing
+  optional string graphXName = 4;
+  optional string graphXUnit = 5;
+
+  //Scale X-axis properly, by providing info about
+  //single sample's value, for example 1sample = 0.005sec.
+  optional float graphXSampleValue = 6;
+  //amount of samples in the complete plot
+  optional int32 graphXSampleNo = 7;
+
+  optional string graphYName = 8;
+  optional string graphYUnit = 9;
+
+
+  //if data is partial, this defines the index of the 1st
+  //sample
+  optional int32 payloadStartIndex = 10;
+  //amount of samples in the payload, could be extracted
+  //from payload field anyways, but I feel it wouldn't
+  //hurt adding it anyways for code verbosity.
+  optional int32 payloadLen = 11;
+
+  optional int32 graphDataVersion = 12;
+  //payload will usually be in float format, but int32
+  //is supported too.
+  repeated int32 payload_int32 = 14;
+
+  //actual payload, this field should be the last one,
+  //as it makes extracting data by sniffing easier.
+  repeated float payload = 15;
+}
