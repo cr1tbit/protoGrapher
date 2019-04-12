@@ -18,7 +18,7 @@ def pack_bytes(bytestring):
     )
 
 class SerialPacketReceiver:
-    def __init__(self, ser_name="/dev/ttyUSB1", ser_baud=460800,async=False):
+    def __init__(self, ser_name="/dev/ttyUSB1", ser_baud=460800,asynchronous=False):
         self.s = self.get_serial_port(ser_name, ser_baud)
         self.s.timeout = 1
 
@@ -41,7 +41,7 @@ class SerialPacketReceiver:
         )
         self.receive_thread.daemon = True
         self.wrapper_queue = Queue()
-        if async:
+        if asynchronous:
             self.receive_thread.start()
 
     def __del__(self):
