@@ -83,7 +83,8 @@ class SerialPacketReceiver:
                 logging.error("invalid packet length detected")
                 logging.error("buffer len - " + str(len(pbuf_bytes)))
                 logging.error("supposed len - " + str(len_from_buffer))
-                return False
+                #return False
+                return True
         except IndexError:
             logging.error("invalid byte buffer length - validation failed")
             return False
@@ -133,7 +134,7 @@ class SerialPacketReceiver:
         except Empty:
             return None
 
-if __name__ == "__main__":
+def standalone_run():
     logging.basicConfig(level=logging.DEBUG,
                         format=('%(levelname)s:\t '
                                 '%(filename)s'
@@ -145,13 +146,16 @@ if __name__ == "__main__":
     r = SerialPacketReceiver(ser_name='/dev/ttyUSB1', ser_baud=115200)
     wraps = [None, None, None]
     while True:
-        wrappedData = r.receive_loop()
+        try:
+            wrappedData = r.receive_loop()
+        except:
+            wrappedData = None
         if wrappedData is not None:
             wraps[wrappedData.meta['id']] = wrappedData
             pyplot.clf()
             for w in wraps:
                 if w is not None:
-                    pyplot.axis([0,256,0,10])
+                    pyplot.axis([0, 256, 0, 10])
                     pyplot.xlabel("{n}[{u}]".format(
                         n=w.meta['x']['name'],
                         u=w.meta['x']['unit'])
@@ -160,12 +164,16 @@ if __name__ == "__main__":
                         n=w.meta['y']['name'],
                         u=w.meta['y']['unit'])
                     )
-                    pyplot.xticks(range(0,w.meta['x']['range']+1,int(w.meta['x']['range']/8)))
-                    #pyplot.axes.set_xscale(1,'linear')
-                    pyplot.plot(w.payload[1:],label='test'+str(w.meta['id']))
+                    # pyplot.xticks(range(0,w.meta['x']['range']+1,int(w.meta['x']['range']/8)))
+                    # pyplot.axes.set_xscale(1,'linear')
+                    pyplot.plot(w.payload[1:], label='test' + str(w.meta['id']))
             pyplot.legend()
 
             pyplot.ion()
             pyplot.show()
             pyplot.draw()
             pyplot.pause(0.1)
+
+
+if __name__ == "__main__":
+    standalone_run()
